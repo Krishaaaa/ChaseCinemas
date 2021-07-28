@@ -1,0 +1,123 @@
+<html>
+<head>
+  <title>JS Form Validation</title>
+  <link rel="stylesheet" href="forms.css">
+  <script type="text/javascript" >
+function validateForm() {
+   notEmpty("name")
+   notEmpty("address")
+   notEmpty("password")
+   isNumeric("zipcode")
+   isNumeric("phone")
+   isValidEmail("email")
+   verifyPassword("password", "pwVerified")
+
+   if(notEmpty("name") && notEmpty("address") && notEmpty("password") && isNumeric("zipcode") && isNumeric("phone") && isValidEmail("email") &&  verifyPassword("password")){
+      window.open("new.html");
+   }
+}
+function notEmpty(inputId) {
+   var inputElement = document.getElementById(inputId);
+   var inputValue = inputElement.value.trim();
+   var isValid = (inputValue.length !== 0); 
+   if(!isValid){
+      alert("Do not leave "+inputId+ " field empty")
+   }
+   return isValid;
+}
+
+function isNumeric(inputId) {
+   var inputElement = document.getElementById(inputId);
+   var inputValue = inputElement.value.trim();
+   var isValid = (inputValue.search(/^[0-9]+$/) !== -1);
+   if(!isValid){
+      alert("Only number inputs are allowed")
+   }
+   return isValid;
+}
+
+function isValidEmail(inputId, errorMsg) {
+   var inputElement = document.getElementById(inputId);
+   var inputValue = inputElement.value;
+   var atPos = inputValue.indexOf("@");
+   var dotPos = inputValue.lastIndexOf(".");
+   var isValid = (atPos > 0) && (dotPos > atPos + 1) && (inputValue.length > dotPos + 2);
+   if(!isValid){
+      alert("Please Enter a valid email ID")
+   }
+   return isValid;
+}
+
+function verifyPassword(pwId, verifiedPwId) {
+   var pwElement = document.getElementById(pwId);
+   var verifiedPwElement = document.getElementById(verifiedPwId);
+   var isTheSame = (pwElement.value === verifiedPwElement.value);
+   if(!isTheSame){
+      alert("Passwords do not match")
+   }
+   return isValid;
+
+}</script>
+</head>
+ 
+<body>
+  <h2>Test JavaScript Form Validation</h2>
+  <form id="tb_form"  onsubmit="return validateForm()" method="post">
+    <table>
+    <tr>
+      <td>Name<span class="error_color"></span></td>
+      <td><input type="text" id="name" name="name"/></td>
+      <td id="name" class="errorcolor">&nbsp;</td></tr>
+    <tr>
+      <td>Address</td>
+      <td><input type="text" id="address" name="address"/></td>
+      <td id="address" class="error_color">&nbsp;</td></tr>
+    <tr>
+      <td>Zip Code<span class="error_color"></span></td>
+      <td><input type="text" id="zipcode" name="zipcode" /></td>
+      <td id="zip" class="error_color">&nbsp;</td></tr>
+    <tr>
+      <td>Country<span class="error_color"></span></td>
+      <td><select id="country" name="country">
+            <option value="" selected>Please select...</option>
+            <option value="AA">India</option>
+            <option value="BB">USA</option>
+            <option value="CC">Australia</option>
+          </select><br /></td>
+      <td id="country" class="error_color">&nbsp;</td></tr>
+    <tr>
+      <td>Gender<span class="error_color"></span></td>
+      <td><input type="radio" name="gender" value="m" />Male
+          <input type="radio" name="gender" value="f" />Female</td>
+      <td id="gender" class="error_color">&nbsp;</td></tr>
+    <tr>
+      <td>Preferences<span class="error_color"></span></td>
+      <td><input type="checkbox" name="color" value="r" />Red
+          <input type="checkbox" name="color" value="g" />Green
+          <input type="checkbox" name="color" value="b" />Blue</td>
+      <td id="color" class="error_color">&nbsp;</td></tr>
+    <tr>
+      <td>Phone<span class="error_color"></span></td>
+      <td><input type="text" id="phone" name="phone" /></td>
+      <td id="phone" class="error_color">&nbsp;</td></tr>
+    <tr>
+      <td>Email<span class="error_color"></span></td>
+      <td><input type="text" id="email" name="email" /></td>
+      <td id="email" class="error_color">&nbsp;</td></tr>
+    <tr>
+        <td>Password(6-8 characters)<span class="error_color"></span></td>
+        <td><input type="password" id="password" name="password" /></td>
+        <td id="password" class="error_color">&nbsp;</td></tr>
+      <tr>
+        <td>verify password<span class="error_color">*</span></td>
+        <td><input type="password" id="veripw" name="pwVerified" /></td>
+        <td id="pwVerified" class="error_color">&nbsp;</td></tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" value="SEND" id="submit"/>&nbsp;
+            <input type="reset" value="CLEAR" id="reset"/></td>
+        <td>&nbsp;</td></tr>
+      </table>
+    </form>
+  </body>
+  </html>
