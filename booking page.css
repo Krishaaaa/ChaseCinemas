@@ -43,7 +43,8 @@ select {
     padding:4px 9px;
     border: none;
     border-radius: 12px;
-    background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+    background: linear-gradient(to right, #8a2387, #e94057, #f27121) !important;
+    opacity: 100% !important;
     box-shadow: 0 0 7px grey;
     color: white;
 }
