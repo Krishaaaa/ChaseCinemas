@@ -18,17 +18,17 @@
   <div align=center>
     <form name=register action="confirmation.html" method="post" onsubmit="return validateForm()">
       <label>
-        <select name="movie" style="cursor: not-allowed;">
+        <select name="movie" style="cursor: not-allowed;" disabled>
             <option value="3">The Conjuring 3:The Devil Made Me Do It</option>
         </select><br><br>
         
         
-        <select name="date" style="cursor: not-allowed;" >
+        <select name="date" style="cursor: not-allowed;" disabled>
           <option id="date1"></option><script> var d= new Date();
             document.getElementById("date1").innerHTML = d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear();</script>
         </select>
         
-        <select name="time" style="cursor: not-allowed;">          
+        <select name="time" style="cursor: not-allowed;" disabled>          
           <option>6:00 - 8:30 PM</option>          
         </select><br><br>
       </label><br>
@@ -335,6 +335,12 @@
         let z = document.getElementById("contact number").value;
         if (isNaN(z) == true || z.toString().length != 10) {
           alert("The contact number is invalid");
+          return false;
+        }
+        
+        //validates is seat is selected
+        if(seats==0){                                                                     
+          alert("select a seat");
           return false;
         }
 
