@@ -343,13 +343,14 @@
           return false;
         }
 
-        //validates email id
-        let e=document.getElementById("email").value;
-        atpos = emailID.indexOf("@");
-        dotpos = emailID.lastIndexOf(".");
-        if (atpos < 1 || ( (dotpos - atpos) < 2 ))
+       //validates email id
+        var e=document.register.email.value;
+         atpos = e.indexOf("@");
+         dotpos = e.lastIndexOf(".");
+         if (atpos < 1 || ( (dotpos - atpos) < 2 ))
           {
             alert("Please enter correct email ID");
+            return false;
           }
 
         return true;
