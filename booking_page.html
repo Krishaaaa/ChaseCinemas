@@ -361,6 +361,12 @@
           alert("The contact number is invalid");
           return false;
         }
+        
+        //validates is seat is selected
+        if(seats==0){                                                                      
+          alert("select a seat");
+          return false;
+        }
 
         //validates email id
         let e=document.getElementById("email").value;
